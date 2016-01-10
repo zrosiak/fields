@@ -1,0 +1,16 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Nazwa
+        span: left
+
+    label:
+        label: Label
+        span: right
+
+    code:
+        label: Konfiguracja
+        type: codeeditor

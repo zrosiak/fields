@@ -1,0 +1,24 @@
+.scoretable, .scoretable table {
+    padding: 0;
+    margin: 0;
+}
+.scoretable th, .scoretable td {
+    padding: 10px;
+    width: auto;
+}
+.scoretable tbody .icon-minus-square {
+    display: none;
+}
+.scoretable tbody tr + tr .icon-minus-square {
+    display: inline-block;
+}
+.scoretable input {
+    width: 100%;
+    border: none;
+}
+.scoretable-action {
+    background: #dddddd;
+}
+.scoretable-action i {
+    cursor: pointer;
+}

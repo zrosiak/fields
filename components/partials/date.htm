@@ -1,0 +1,19 @@
+{% set months = [
+    '',
+    'stycznia',
+    'lutego',
+    'marca',
+    'kwietnia',
+    'maja',
+    'czerwca',
+    'lipca',
+    'sierpnia',
+    'września',
+    'października',
+    'listopada',
+    'grudnia'
+] %}
+<time class="article__date cf" datetime="{{ post.published_at|date('Y-m-d') }}">
+    <span>{{ post.published_at|date('d') }}</span>
+    {{ months[post.published_at|date('n')] }}<br>{{ post.published_at|date('Y') }}
+</time>

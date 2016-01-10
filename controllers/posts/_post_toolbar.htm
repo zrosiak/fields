@@ -1,0 +1,56 @@
+<?php
+    $isCreate = $this->formGetContext() == 'create';
+    $pageUrl = isset($pageUrl) ? $pageUrl : null;
+?>
+<div class="form-buttons loading-indicator-container">
+
+    <!-- Save -->
+    <a
+        href="javascript:;"
+        class="btn btn-primary oc-icon-check save"
+        data-request="onSave"
+        data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+        data-request-before-update="$el.trigger('unchange.oc.changeMonitor')"
+        <?php if (!$isCreate): ?>data-request-data="redirect:0"<?php endif ?>
+        data-hotkey="ctrl+s, cmd+s">
+            <?= e(trans('backend::lang.form.save')) ?>
+    </a>
+
+    <?php if (!$isCreate): ?>
+        <!-- Save and Close -->
+        <a
+            href="javascript:;"
+            class="btn btn-primary oc-icon-check save"
+            data-request-before-update="$el.trigger('unchange.oc.changeMonitor')"
+            data-request="onSave"
+            data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>">
+                <?= e(trans('backend::lang.form.save_and_close')) ?>
+        </a>
+
+        <?php if (empty($this->formGetModel()->template->partial) === false) : ?>
+            <!-- Preview -->
+            <button
+                type="button"
+                class="btn btn-primary oc-icon-external-link"
+                data-control="preview-button"
+                data-request="onPreview"
+                data-request-success="window.open('<?= URL::to($pageUrl) ?>/preview/<?= $this->formGetModel()->id ?>', 'preview');"><?= e(trans('backend::lang.form.preview_title')) ?></button>
+
+            <button
+                href="<?= $this->formGetModel()->url ?>"
+                target="_blank"
+                class="btn btn-primary oc-icon-crosshairs"
+                data-control="goto-button"
+                data-request="onGoto"
+                data-request-success="window.open('<?= URL::to($pageUrl) ?>' + data.result, 'view');"><?= e(trans('bm.field::lang.post.goto')) ?></button>
+        <?php endif ?>
+
+        <!-- Delete -->
+        <button
+            type="button"
+            class="btn btn-default empty oc-icon-trash-o"
+            data-request="onDelete"
+            data-request-confirm="<?= e(trans('bm.field::lang.post.delete_confirm')) ?>"
+            data-control="delete-button"></button>
+    <?php endif ?>
+</div>

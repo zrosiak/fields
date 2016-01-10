@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Template
+
+# Model Form Field configuration
+form: $/bm/field/models/template/fields.yaml
+
+# Model Class name
+modelClass: Bm\Field\Models\Template
+
+# Default redirect location
+defaultRedirect: bm/field/template
+
+# Create page
+create:
+    title: Create Template
+    redirect: bm/field/template/update/:id
+    redirectClose: bm/field/template
+
+# Update page
+update:
+    title: Edit Template
+    redirect: bm/field/template
+    redirectClose: bm/field/template
+
+# Preview page
+preview:
+    title: Preview Template

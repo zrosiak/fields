@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Nazwa
+
+    partial:
+        label: Partial
+        span: left
+
+    page_name:
+        label: Nazwa strony
+        default: post
+        span: right
+        type: dropdown
+        options: listPages
+        placeholder: Brak
+
+    items:
+      type: Bm\Field\FormWidgets\ItemList
+      size: huge
+      tab: Fields

@@ -1,0 +1,16 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: bm.field::lang.blog.create_post
+form: ~/plugins/bm/field/models/post/fields.yaml
+modelClass: Bm\Field\Models\Post
+defaultRedirect: bm/field/posts
+
+create:
+    redirect: bm/field/posts/update/:id
+    redirectClose: bm/field/posts
+
+update:
+    redirect: bm/field/posts
+    redirectClose: bm/field/posts

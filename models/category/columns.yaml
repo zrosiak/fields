@@ -1,0 +1,18 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: bm.field::lang.category.name
+        searchable: true
+
+    url:
+        label: bm.field::lang.category.slug
+        searchable: true
+        type: partial
+        path: ~/plugins/bm/field/models/category/_url_column.htm
+
+    post_count:
+        label: bm.field::lang.category.posts
+        sortable: false

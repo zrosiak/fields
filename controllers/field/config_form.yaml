@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Field
+
+# Model Form Field configuration
+form: $/bm/field/models/field/fields.yaml
+
+# Model Class name
+modelClass: Bm\Field\Models\Field
+
+# Default redirect location
+defaultRedirect: bm/field/field
+
+# Create page
+create:
+    title: Create Field
+    redirect: bm/field/field/update/:id
+    redirectClose: bm/field/field
+
+# Update page
+update:
+    title: Edit Field
+    redirect: bm/field/field
+    redirectClose: bm/field/field
+
+# Preview page
+preview:
+    title: Preview Field

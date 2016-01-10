@@ -1,0 +1,17 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id: 
+        label: Id
+
+    name:
+        label: Nazwa
+        searchable: true
+        sortable: true
+
+    partial:
+        label: Szablon
+        searchable: true
+        sortable: true

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Box Setting
+
+# Model Form Field configuration
+form: $/bm/field/models/boxsetting/fields.yaml
+
+# Model Class name
+modelClass: Bm\Field\Models\BoxSetting
+
+# Default redirect location
+defaultRedirect: bm/field/boxsettings
+
+# Create page
+create:
+    title: Create Box Setting
+    redirect: bm/field/boxsettings/update/:id
+    redirectClose: bm/field/boxsettings
+
+# Update page
+update:
+    title: Edit Box Setting
+    redirect: bm/field/boxsettings
+    redirectClose: bm/field/boxsettings
+
+# Preview page
+preview:
+    title: Preview Box Setting

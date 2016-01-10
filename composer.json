@@ -1,0 +1,28 @@
+{
+    "name": "bm/field",
+    "version": "1.0.1",
+    "type": "october-plugin",
+    "description": "OctoberCMS articles plugin",
+    "keywords": ["october", "cms", "article", "plugin"],
+    "license": "",
+    "authors": [
+        {
+            "name": "Ziemowit Rosiak",
+            "email": "ziemowit.rosiak@blueservices.pl"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bm\\Field\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.1"
+        }
+    }
+}

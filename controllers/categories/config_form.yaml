@@ -1,0 +1,16 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: bm.field::lang.blog.create_category
+form: ~/plugins/bm/field/models/category/fields.yaml
+modelClass: Bm\Field\Models\Category
+defaultRedirect: bm/field/categories
+
+create:
+    redirect: bm/field/categories/update/:id
+    redirectClose: bm/field/categories
+
+update:
+    redirect: bm/field/categories
+    redirectClose: bm/field/categories

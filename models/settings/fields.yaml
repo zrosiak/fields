@@ -1,0 +1,8 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    history:
+        label: bm.field::lang.field.save_history
+        type: checkbox

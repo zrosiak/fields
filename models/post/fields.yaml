@@ -1,0 +1,91 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    title:
+        label: bm.field::lang.post.title
+        span: left
+        placeholder: bm.field::lang.post.title_placeholder
+
+    slug:
+        label: bm.field::lang.post.slug
+        span: right
+        placeholder: bm.field::lang.post.slug_placeholder
+        preset:
+            field: title
+            type: slug
+
+    toolbar:
+        type: partial
+        path: post_toolbar
+        cssClass: collapse-visible
+
+tabs:
+    stretch: true
+    fields:
+        template_id:
+            tab: bm.field::lang.post.tab_settings
+            label: Typ artykułu
+            type: dropdown
+            options: listTemplates
+            attributes: 
+                data-request: "onChangeTemplate"
+            span: left
+            default: 1
+        
+        categories:
+            tab: bm.field::lang.post.tab_settings
+            type: dropdown
+            label: bm.field::lang.blog.categories
+            comment: bm.field::lang.post.categories_comment
+            options: listCategories
+            span: right
+            default: 1
+
+        published:
+            tab: bm.field::lang.post.tab_settings
+            label: bm.field::lang.post.published
+            span: left
+            type: checkbox
+            default: 0
+            options:
+                - bm.field::lang.post.draft
+                #- bm.field::lang.post.review
+                - bm.field::lang.post.published
+        
+        published_at:
+            tab: bm.field::lang.post.tab_settings
+            label: Data publikacji
+            span: left
+            type: datepicker
+        
+        expire_at:
+            tab: bm.field::lang.post.tab_settings
+            label: Data wygaśnięcia
+            span: right
+            type: datepicker
+        
+        # user_id:
+        #     tab: bm.field::lang.post.tab_settings
+        #     label: Autor
+        #     span: left
+        #     type: dropdown
+        #     options: listUsers
+
+        # excerpt:
+        #     tab: bm.field::lang.post.tab_edit
+        #     label: bm.field::lang.post.excerpt
+        #     type: textarea
+        #     size: small
+
+        # content:
+        #     tab: bm.field::lang.post.tab_edit
+        #     stretch: true
+        #     cssClass: field-slim
+        #     type: richeditor
+        #     language: markdown
+        #     showGutter: false
+        #     wrapWords: true
+        #     fontSize: 13
+        #     margin: 15

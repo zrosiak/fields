@@ -1,0 +1,65 @@
+<?= $this->listRender() ?>
+<!--<style>
+    .sortable {
+        /*position: relative;*/
+    }
+    .sortable tr.dragged {
+        /*position: absolute;
+        min-width: 300px;
+        min-height: 30px;*/
+    }
+</style>
+<script>
+    var $elems;
+
+    $(function(){
+        var group = $(".table.data tbody").sortable({
+            group: 'data',
+            containerSelector: 'tr',
+            itemSelector: 'tr',
+            pullPlaceholder: false,
+            /*onDragStart: function (item, container, _super) {
+                $elems = item.nextUntil('.' + item.attr('class').split(' ')[0]).filter(function(){
+                    return item.attr('class') < $(this).attr('class')
+                });
+                $elems.hide();
+            },*/
+            onDrop: function  (item, container, _super) {
+                //item = item.add(item.next());
+                //$elems.show();
+
+                var clonedItem = $('<tr/>').css({height: 30});
+                var fields = {};
+                var values = $(item).find('.list-expand-collapse').data('request-data').split(', ');
+
+                for (elem in values) {
+                    var e = values[elem].split(': ');
+                    fields[e[0]] = e[1].replace(/'/g, "");
+                }
+
+                if (item.prev().length > 0) {
+                    fields.parent_id = item.prev().find('a.list-expand-collapse').data('request-data').match(/'([0-9])+'/)[1];
+                } else {
+                    fields.parent_id = 0;
+                }
+
+                item.before(clonedItem);
+                clonedItem.animate({'height': item.height()});
+
+                item.animate(clonedItem.position(), function(){
+                    clonedItem.detach();
+                    _super(item);
+                });
+                
+                $('.sortable').request('onMove', {
+                    data: fields,
+                    success: function(data) {
+                        if (data.result !== false) {
+                            item.attr('class', item.attr('class').replace(/level-[0-9]+/, 'level-' + data.result));
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>-->

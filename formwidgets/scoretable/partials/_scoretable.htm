@@ -1,0 +1,31 @@
+<?php $rows_count = count($value) ?: 1; ?>
+<?php $count = 1; ?>
+<div class="redactor-editor scoretable">
+    <table class="<?= $name ?>" data-count="<?= $rows_count ?>">
+        <thead>
+            <tr>
+                <?php foreach ($columns as $column) : ?>
+                    <th><?= $column ?></th>
+                <?php endforeach; ?>
+                <th class="scoretable-action">Akcja</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($value ?: [1 => ''] as $i => $val) : ?>
+                <tr>
+                    <?php foreach ($columns as $key => $column) : ?>
+                        <td><input type="text" name="<?= $name . '[' . $count . '][' . $key . ']' ?>" value="<?= isset($val[$key]) ? $val[$key] : '' ?>"></td>
+                    <?php endforeach; ?>
+                    <td class="scoretable-action">
+                        <i class="icon-plus-square"></i>
+                        <i class="icon-minus-square"></i>
+                        <!--<i class="icon-align-justify"></i>-->
+                    </td>
+                </tr>
+            <?php
+                $count++;
+                endforeach; 
+            ?>
+        </tbody>
+    </table>
+</div>

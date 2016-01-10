@@ -1,0 +1,43 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+scopes:
+
+    category:
+
+        # Filter name
+        label: bm.field::lang.posts.category
+
+        # Model Class name
+        modelClass: Bm\Field\Models\Category
+
+        # Model attribute to display for the name
+        nameFrom: name
+
+        # Apply query scope
+        conditions: category_id in (:filtered)
+
+    template:
+
+        # Filter name
+        label: bm.field::lang.posts.template
+
+        # Model Class name
+        modelClass: Bm\Field\Models\Template
+
+        # Model attribute to display for the name
+        nameFrom: name
+
+        # Apply query scope
+        conditions: template_id in (:filtered)
+
+    published:
+
+        # Filter name
+        label: bm.field::lang.posts.hide_published
+
+        # Filter type
+        type: checkbox
+
+        # SQL Conditions
+        conditions: (published <> true OR published_at > current_timestamp OR expire_at <= current_timestamp)

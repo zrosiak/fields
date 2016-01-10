@@ -1,0 +1,60 @@
+<div id="freewall" class="freewall cf grid-32 grid-md-24 grid-msw-48">
+    {% for post in posts %}
+        <article class="tile">
+            <div class="tile-content">
+                {% if post.photo %}
+                    <a href="{{ post.url }}">
+                        <img class="tile-content__image image-src--resize" 
+                            data-src-ms="{{ post.photo|media|thumbnail(280,null,'landscape') }}"
+                            data-src-msw="{{ post.photo|media|thumbnail(460,null,'landscape') }}"
+                            data-src-mt="{{ post.photo|media|thumbnail(460,null,'landscape') }}"
+                            data-src-md="{{ post.photo|media|thumbnail(460,null,'landscape') }}"
+                            data-src="{{ post.photo|media|thumbnail(460,null,'landscape') }}"
+                            src="">
+                    </a>
+                {% endif %}
+                <div class="tile-content__text tile-content__text--arrow-white">
+                    <label class="label-date label-date--green">{{ post.published_at|date('d.m.Y') }}</label>
+                    <label class="label-date"><a href="{{ post.categories.url }}">{{ post.categories.name }}</a></label>
+                    <h4><a class="link-color-black" href="{{ post.url }}"> {{ post.title }} </a></h4>
+                    <p class="tile-content__paragraph tile-content__paragraph--gray pd-ver-10">{{ post.excerpt|default(excerpt(post.content, 160))|raw }}</p>
+                </div>
+                <a href="{{ post.url }}" class="btn btn-link btn-link__more btn-link--arrow-right float-right">więcej</a>
+            </div>
+        </article>
+    {% endfor %}
+</div>
+
+<div class="grid-16 grid-md-24 grid-msw-48">
+    {% component 'box::boks_wyniki_i_tabele' %}
+    {% component 'box::boks_akademia_juniora' %}
+    {% partial 'components/sponsorship' wide=true %}
+    {% component 'box::boks_reklamowy_lnp_370x300_2' %}
+</div>
+
+{% if posts.lastPage > 1 %}
+    <div class="pagination c cf">
+        <ul class="pagination__list">
+            <li>{{ page({ (pageParam): page }) }}</li>
+            {% if posts.currentPage > 1 %}
+                <li class="pagination__list-item">
+                    <a class="pagination__list-item--link pagination__list-item--first" href="{{ category.url }}/{{ posts.currentPage-1 }}">poprzednia</a>
+                </li>
+            {% endif %}
+
+            {% for page in (posts.currentPage - 4)..(posts.currentPage + 4) %}
+                {% if page > 0 and page <= posts.lastPage %}
+                    <li class="pagination__list-item">
+                        <a class="pagination__list-item--link pagination__list-item--{{ posts.currentPage == page ? 'current' : 'link' }}" href="{{ category.url }}/{{ page }}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if posts.lastPage > posts.currentPage %}
+                <li class="pagination__list-item">
+                    <a class="pagination__list-item--link pagination__list-item--last" href="{{ category.url }}/{{ posts.currentPage+1 }}">następna</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

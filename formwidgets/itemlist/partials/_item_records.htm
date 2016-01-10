@@ -1,0 +1,4 @@
+<?php foreach ($records as $record): ?>
+    <?php $config = \Yaml::parse($record->code); ?>
+    <li data-id="<?= $record->id ?>" class='item'><?= e(trans($record->label ?: $record->name)) ?><?php if (!empty($config['tab'])) : ?><span class="gray">(<?= e(trans($config['tab'])) ?>)</span><?php endif; ?></li>
+<?php endforeach ?>

@@ -1,0 +1,17 @@
+1.0.1: First version of Field
+1.0.2:
+    - Migracje
+    - blog_create_posts_table.php
+    - blog_create_categories_table.php
+    - create_fields_table.php
+    - create_templates_table.php
+    - create_posts_history_table.php
+    - create_types_table.php
+    - seed_templates.php
+1.0.3:
+    - Ustawienia komponentu Box
+    - create_field_box_settings_table.php
+1.0.4:
+    - W template opcja wybrania strony na którą ma wpadać adres
+    - update_templates_table_page_name.php
+1.0.5: Poprawione pobieranie kategorii

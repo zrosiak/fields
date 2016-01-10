@@ -1,0 +1,27 @@
+<?php if ($items): ?>
+    <ul>
+        <?php foreach ($items as $item) : ?>
+            <li class="item" data-item-path="<?= e($item->name) ?>" data-item-theme="<?= e($this->theme->getDirName()) ?>" data-id="<?= e($item->id) ?>">
+                <a href="#">
+                    <span class="title"><?= e($item->name) ?></span>
+                    <span class="description"></span>
+                    <span class="borders"></span>
+                </a>
+
+                <input type="hidden" name="template[<?= e($item->id) ?>]" value="0"/>
+                <div class="checkbox custom-checkbox nolabel">
+                    <input 
+                        id="<?= $item->id ?>" 
+                        type="checkbox"
+                        name="object[<?= e($item->id) ?>]" 
+                        <?= $this->isItemSelected($item->id) ? 'checked' : null ?> 
+                        data-request="<?= $this->getEventHandler('onSelect') ?>"
+                        value="1">
+                    <label for="<?= $item->id ?>">Select</label>
+                </div>
+            </li>
+        <?php endforeach ?>
+    </ul>
+<?php else: ?>
+    <p class="no-data"><?= e(trans($this->noRecordsMessage)) ?></p>
+<?php endif ?>

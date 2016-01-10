@@ -1,0 +1,96 @@
+<div class="form-preview">
+    <div>
+        <ol id="reorderRecords" class="fields_list remove">
+            <?php
+                if ($value->count()) {
+                    echo $this->makePartial('item_records', ['records' => $value]);
+                }
+            ?>
+        </ol>
+        <ol id="reorderFields" class="fields_list">
+            <?php
+                if ($field->count()) {
+                    echo $this->makePartial('item_records', ['records' => $field]);
+                }
+            ?>
+        </ol>
+    </div>
+</div>
+<style>
+    .fields_list {
+        width: 400px;
+        min-height: 200px;
+        vertical-align: top;
+        display: inline-block;
+        padding: 0 10px;
+        border: 1px solid #eee;
+        margin-right: 30px;
+        list-style: none;
+    }
+    .fields_list li {
+        width: 360px;
+        line-height: 20px;
+        padding: 10px;
+        width: 100%;
+        background: #eee;
+        margin: 10px 0;
+    }
+    .fields_list li .gray {
+        color: gray;
+        font-size: 13px;
+        margin-left: 10px;
+    }
+    #reorderRecords {
+    }
+    #reorderFields {
+    }
+</style>
+<script>
+    $(function () {
+        var group = $(".fields_list").sortable({
+            group: 'fields_list',
+            pullPlaceholder: false,
+            onDrop: function  (item, container, _super) {
+                var clonedItem = $('<li/>').css({height: 0});
+                var fields = [];
+                item.before(clonedItem);
+                clonedItem.animate({'height': item.height()});
+
+                item.animate(clonedItem.position(), function  () {
+                    clonedItem.detach();
+                    _super(item);
+                });
+
+                /*$('#reorderFields li').each(function(){
+                    if (typeof $(this).data('id') !== 'undefined') {
+                        fields.push($(this).data('id'));
+                    }
+                });
+
+                $('#fields_list_value').val(fields.join());*/
+
+                if (container.el.hasClass('remove') === true) {
+                    $('#reorderFields').request('<?= $this->getEventHandler('onRemove') ?>', {
+                        data: {id: $(item).data('id')}
+                    });
+                } else {
+                    $('#reorderFields').request('<?= $this->getEventHandler('onMove') ?>', {
+                        data: {
+                            id: $(item).data('id'),
+                            order: $(item).index()
+                        }
+                    });
+                }
+            }
+        });
+    });
+    $( document ).ready(function() {
+        var height= $('#reorderRecords').height();
+            li_r = $("#reorderRecords li").length;
+            li_f = $("#reorderFields li").length;
+        if (li_r > li_f) {
+            $("#reorderFields").height(height);
+        }
+    });    
+  
+</script>

@@ -1,0 +1,59 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    name:
+        label: bm.field::lang.category.name
+        placeholder: bm.field::lang.category.name_placeholder
+        span: left
+
+    slug:
+        label: bm.field::lang.category.slug
+        span: right
+        placeholder: bm.field::lang.category.slug_placeholder
+        preset: name
+
+    parent_id:
+        label: Kategoria nadrzędna
+        type: dropdown
+        options: listCategories
+        span: left
+        comment: '&nbsp;'
+
+    # /*'post_id:
+    #     'label: 'Strona kategorii',
+    #     'type: 'dropdowngroup',
+    #     'groups: Category::listCategories(),
+    #     'placeholder: 'Brak',
+    #     'default: '',
+    #     'span: 'right',
+    #     'comment: 'Artykuł pojawi się zamiast kategorii',
+    # ],*/
+
+    template_id:
+        label: Domyślna strona zbiorcza
+        type: dropdown
+        span: left
+        placeholder: Brak
+        options: listTemplates
+        comment: Na stronie kategorii widoczna będzie lista artykułów danego typu
+
+    pagination:
+        label: Stronicowanie
+        type: dropdown
+        span: right
+        default: 10
+        options:
+            'false': 'Brak'
+            3: 3
+            5: 5
+            6: 6
+            8: 8
+            9: 9
+            10: 10
+            12: 12
+            20: 20
+            50: 50
+        comment: Ilość artykułów na stronie zbiorczej

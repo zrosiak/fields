@@ -1,0 +1,46 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    title:
+        label: bm.field::lang.post.title
+        searchable: true
+
+    # author:
+    #   label: Author
+    #   relation: user
+    #   select: login
+    #   searchable: true
+
+    category_name:
+        label: bm.field::lang.posts.category
+        relation: categories
+        select: name
+        searchable: true
+        sortable: false
+
+    created_at:
+        label: bm.field::lang.post.created
+        type: date
+        invisible: true
+
+    updated_at:
+        label: bm.field::lang.post.updated
+        type: date
+        invisible: true
+
+    published_at:
+        label: bm.field::lang.post.published_at
+        type: date
+
+    template_id:
+        label: bm.field::lang.posts.template
+        type: partial
+        path: ~/plugins/bm/field/models/field/_template_column.htm
+
+    slug:
+        label: bm.field::lang.post.slug
+        type: partial
+        path: ~/plugins/bm/field/models/field/_url_column.htm
