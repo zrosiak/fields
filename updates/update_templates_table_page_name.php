@@ -8,8 +8,8 @@ class UpdateTemplatesTablePageName extends Migration
 
     public function up()
     {
-        if (Schema::hasTable('rainlab_blog_categories')) {
-            Schema::table('rainlab_blog_categories', function ($table) {
+        if (Schema::hasTable('bm_field_templates')) {
+            Schema::table('bm_field_templates', function ($table) {
                 $table->text('page_name')->nullable();
             });
         }
@@ -17,8 +17,8 @@ class UpdateTemplatesTablePageName extends Migration
 
     public function down()
     {
-        if (Schema::hasTable('rainlab_blog_categories')) {
-            Schema::table('rainlab_blog_categories', function($table) {
+        if (Schema::hasTable('bm_field_templates')) {
+            Schema::table('bm_field_templates', function($table) {
                 $table->dropColumn('page_name');
             });
         }

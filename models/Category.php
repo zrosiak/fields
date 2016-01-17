@@ -171,9 +171,10 @@ class Category extends Model
      */
     public function getSubcategoriesId($self = true, $direct = false)
     {
-        $categories = $this->getSubcategories($self, $direct);
-
-        return array_fetch($categories->toArray(), 'id');
+        return array_fetch(
+            $this->getSubcategories($self, $direct)->toArray(),
+            'id'
+        );
     }
 
     protected static function loadCategory($category_page = null, $parent = null)
@@ -238,7 +239,7 @@ class Category extends Model
 
     public function beforeSave()
     {
-        $object = $this ?: Category::first();
+        $object = isset($this->id) ? $this : Category::first();
 
         if (isset($object->id) && $original = $object->getOriginal()) {
             // wydobywanie i zapisywanie dodatkowych parametrów

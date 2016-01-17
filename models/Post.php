@@ -438,8 +438,11 @@ class Post extends Model
         }
 
         // categories_id
+        // ustawione na sztywno id kategorii; nadpisują kategorię
         if ($categories_id) {
-            $categories_id = is_array($categories_id) ? $categories_id : explode(',', $categories_id);
+            $categories_id = is_array($categories_id)
+                ? $categories_id
+                : explode(',', $categories_id);
             $category = Category::find($categories_id);
         } elseif (!$category instanceof Category) {
             // category
@@ -447,14 +450,20 @@ class Post extends Model
         }
 
         // subcategories
-        if ($subcategories && $category) {
+        // pobieranie id podkategorii i kategorii, jeśli subcategories = true
+        // w przeciwnym wypadku pobieranie id kategorii
+        if ($category && !$categories_id) {
             if ($category instanceof Category) {
-                $categories_id = $category->getSubcategoriesId();
+                $categories_id = $subcategories
+                    ? $category->getSubcategoriesId()
+                    : [$category->id];
             } else {
                 $categories_id = [];
 
                 foreach ($category as $c) {
-                    $categories_id = $categories_id + $c->getSubcategoriesId();
+                    $categories_id = $categories_id + (
+                        $subcategories ? $c->getSubcategoriesId() : [$c->id]
+                    );
                 }
             }
         }
